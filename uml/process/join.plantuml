@@ -1,0 +1,13 @@
+@startuml join
+actor Actor as user
+participant App as app
+participant Server as server
+
+user -> app :click join icon
+app -> server :request join change status data
+server -> app :response join change data
+app -> server :request envet participants data
+server -> app :response event participants data
+app -> user :update join status and participants data
+
+@enduml

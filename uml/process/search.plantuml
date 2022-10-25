@@ -1,0 +1,19 @@
+@startuml search
+actor Actor as user
+participant App as app
+participant Server as server
+
+user -> app :click search icon
+app -> server :request channel data
+server -> app :response channel data
+app -> user :open search page
+user-> app :select date and channel
+app -> server :request search data
+search -> app :response search data
+app -> user :show search result
+user -> app :click clean button
+app -> server :request data without search
+server -> app :response data without search
+app -> user :show data without search
+
+@enduml

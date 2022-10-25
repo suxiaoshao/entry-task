@@ -1,0 +1,16 @@
+@startuml "login page"
+object Login{
+    state
+    \t username
+    \t password
+}
+object Input{
+    props
+    \t value
+    \t onChangeText
+    \t placehoder
+    \t placehoderTextColor
+    \t icon
+}
+Login -->Input
+@enduml
