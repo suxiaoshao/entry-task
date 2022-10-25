@@ -8,8 +8,8 @@ object Input{
     props
     \t value
     \t onChangeText
-    \t placehoder
-    \t placehoderTextColor
+    \t placeholder
+    \t placeholderTextColor
     \t icon
 }
 Login -->Input
