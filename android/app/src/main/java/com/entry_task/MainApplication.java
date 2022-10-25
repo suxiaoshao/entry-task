@@ -12,6 +12,7 @@ import com.facebook.soloader.SoLoader;
 import com.entry_task.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import com.zoontek.rnlocalize.RNLocalizePackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -87,5 +88,13 @@ public class MainApplication extends Application implements ReactApplication {
         e.printStackTrace();
       }
     }
+  }
+  @Override
+  protected List<ReactPackage> getPackages() {
+    @SuppressWarnings("UnnecessaryLocalVariable")
+    List<ReactPackage> packages = new PackageList(this).getPackages();
+    // …
+    packages.add(new RNLocalizePackage());
+    return packages;
   }
 }

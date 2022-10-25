@@ -1,10 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import useI18n from '../../i18n/useI18n';
 
-export default function index() {
+export default function () {
+  const t = useI18n();
   return (
     <View>
-      <Text>Home</Text>
+      <Text>{t('home_name')}</Text>
     </View>
   );
 }
