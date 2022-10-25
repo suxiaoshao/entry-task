@@ -1,0 +1,15 @@
+@startuml comment
+actor Actor as user
+participant App as app
+participant Server as server
+
+user -> app :click comment icon
+app -> user :show comment input
+user -> app :input comment and click send button
+app -> server :request post comment data
+server -> app :response data
+app -> server :request envet participants data
+server -> app :response event participants data
+app -> user :update comment list and participants data
+
+@enduml

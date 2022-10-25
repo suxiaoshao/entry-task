@@ -1,0 +1,13 @@
+@startuml like
+actor Actor as user
+participant App as app
+participant Server as server
+
+user -> app :click like icon
+app -> server :request like change status data
+server -> app :response like change data
+app -> server :request envet participants data
+server -> app :response event participants data
+app -> user :update like status and participants data
+
+@enduml
