@@ -4,5 +4,7 @@
   "me_name": "Me",
   "sing_in": "SING IN",
   "sing_in_desc": "FIND THE MOST LOVED ACTIVITIES",
-  "sing_in_title": "BLACK CAT"
+  "sing_in_title": "BLACK CAT",
+  "username_placeholder": "Username",
+  "password_placeholder": "Password"
 }
