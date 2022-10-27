@@ -3,22 +3,24 @@ import Detail from '../pages/Detail';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Me from '../pages/Me';
-import * as React from 'react';
+import React from 'react';
 import {useAppSelector} from '../store/types';
 
 const Stack = createNativeStackNavigator();
 export default function AppRouter() {
   const auth = useAppSelector(data => data.login.token);
-  return auth ? (
+  return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen<RouterName> name="Home" component={Home} />
+      {auth ? (
+        <>
+          <Stack.Screen<RouterName> name="Home" component={Home} />
 
-      <Stack.Screen<RouterName> name="Me" component={Me} />
-      <Stack.Screen<RouterName> name="Detail" component={Detail} />
-    </Stack.Navigator>
-  ) : (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen<RouterName> name="Login" component={Login} />
+          <Stack.Screen<RouterName> name="Me" component={Me} />
+          <Stack.Screen<RouterName> name="Detail" component={Detail} />
+        </>
+      ) : (
+        <Stack.Screen<RouterName> name="Login" component={Login} />
+      )}
     </Stack.Navigator>
   );
 }

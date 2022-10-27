@@ -7,10 +7,14 @@ export default StyleSheet.create({
   },
   input: {
     width: 240,
-    marginTop: 16,
     color: '#453257',
   },
   activeContainer: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
+  },
+  errorText: {
+    height: 16,
+    color: 'red',
+    fontSize: 12,
   },
 });

@@ -6,5 +6,7 @@
   "sing_in_desc": "FIND THE MOST LOVED ACTIVITIES",
   "sing_in_title": "BLACK CAT",
   "username_placeholder": "Username",
-  "password_placeholder": "Password"
+  "password_placeholder": "Password",
+  "username_error": "Username format is incorrect",
+  "password_error": "Password format is incorrect"
 }

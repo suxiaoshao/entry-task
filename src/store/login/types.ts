@@ -8,4 +8,4 @@ export enum LoginActionTypes {
   SET_TOKEN = 'SET_TOKEN',
 }
 
-export type LoginAction = ActionEnum<LoginActionTypes.SET_TOKEN, string>;
+export type LoginAction = ActionEnum<LoginActionTypes.SET_TOKEN, string | null>;

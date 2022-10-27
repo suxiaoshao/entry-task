@@ -9,7 +9,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './styles';
 
 export interface InputProps extends TextInputProps {
@@ -29,7 +29,7 @@ export default function ({
   style: inputStyle,
   ...props
 }: InputProps) {
-  const [active, setActive] = React.useState(false);
+  const [active, setActive] = useState(false);
 
   return (
     <View
