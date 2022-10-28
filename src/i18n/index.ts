@@ -1,12 +1,14 @@
-import i18n from 'i18next';
+import i18n, {Resource} from 'i18next';
 import {initReactI18next} from 'react-i18next';
 import * as RNLocalize from 'react-native-localize';
 import en from './lang/en.json';
 
+console.log('RNLocalize', RNLocalize);
+
 const locales = RNLocalize.getLocales();
 const systemLanguage = locales[0]?.languageCode;
 
-const resources = {
+const resources: Resource = {
   en: {
     translation: en,
   },
@@ -17,6 +19,7 @@ i18n
   .init({
     resources,
     lng: systemLanguage ?? 'en',
+    compatibilityJSON: 'v3',
     interpolation: {
       escapeValue: false,
     },
