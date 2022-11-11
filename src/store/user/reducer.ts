@@ -1,14 +1,18 @@
 import {LoginAction, LoginActionTypes, LoginState} from './types';
 
-const initialState: LoginState = {token: null};
+const initialState: LoginState = null;
 
 export default function loginReducer(
   state = initialState,
   action: LoginAction,
 ) {
   switch (action.type) {
-    case LoginActionTypes.SET_TOKEN:
-      return {...state, token: action.payload};
+    case LoginActionTypes.SET_DATA:
+      if (action.payload) {
+        return {...state, ...action.payload};
+      } else {
+        return null;
+      }
     default:
       return state;
   }

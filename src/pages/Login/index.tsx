@@ -5,7 +5,7 @@ import InputContent from './components/InputContent';
 import styles from './style';
 import TopContent from './components/TopContent';
 import {useAppDispatch} from '../../store/types';
-import {login} from '../../store/login/actionCreator';
+import {login} from '../../store/user/actionCreator';
 import useInput from '../../hooks/useInput';
 import {verityPassword, verityUsername} from './verity';
 

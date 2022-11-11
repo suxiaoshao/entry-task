@@ -1,12 +1,14 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import useI18n from '../../i18n/useI18n';
+import Header from './components/Header';
+import styles from './styles';
 
 export default function () {
   const t = useI18n();
   return (
-    <View>
-      <Text>{t('home_name')}</Text>
+    <View style={styles.container}>
+      <Header />
     </View>
   );
 }

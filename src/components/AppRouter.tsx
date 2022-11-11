@@ -8,7 +8,7 @@ import {useAppSelector} from '../store/types';
 
 const Stack = createNativeStackNavigator();
 export default function AppRouter() {
-  const auth = useAppSelector(data => data.login.token);
+  const auth = useAppSelector(data => data.user?.token);
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {auth ? (
