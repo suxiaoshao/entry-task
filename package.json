@@ -55,6 +55,9 @@
     ],
     "setupFiles": [
       "./__tests__/config/jest.setup.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "__tests__/config"
     ]
   }
 }

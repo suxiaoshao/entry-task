@@ -6,7 +6,7 @@ export const login =
   (username: string, password: string): AppThunkAction =>
   async dispatch => {
     const data = await loginRequest(username, password);
-    dispatch(setToken(data.token));
+    return dispatch(setToken(data.token));
   };
 
 export const logout = (): LoginAction => setToken(null);
