@@ -13,9 +13,18 @@ import React, {useState} from 'react';
 import styles from './styles';
 
 export interface InputProps extends TextInputProps {
+  /**
+   * container style,include icon and input
+   * */
   containerStyle?: StyleProp<ViewStyle>;
   iconStyle?: StyleProp<ImageStyle>;
+  /**
+   * icon source,if not set,will not show icon
+   * */
   iconSource?: ImageSourcePropType | undefined;
+  /**
+   * set style when input is active(mean focus)
+   * */
   activeContainStyle?: StyleProp<TextStyle>;
 }
 
@@ -29,6 +38,9 @@ export default function ({
   style: inputStyle,
   ...props
 }: InputProps) {
+  /**
+   * if the input is focused
+   * */
   const [active, setActive] = useState(false);
 
   return (
