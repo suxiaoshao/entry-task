@@ -7,5 +7,9 @@
   "username_placeholder": "Username",
   "password_placeholder": "Password",
   "username_error": "Username format is incorrect",
-  "password_error": "Password format is incorrect"
+  "password_error": "Password format is incorrect",
+  "i_am_going": "I am going",
+  "going": "Going",
+  "i_like_it": "I like it",
+  "like": "Likes"
 }

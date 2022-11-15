@@ -1,13 +1,10 @@
-import {LoginAction, LoginActionTypes, LoginState} from './types';
+import {UserAction, UserActionTypes, UserState} from './types';
 
-const initialState: LoginState = null;
+const initialState: UserState = null;
 
-export default function loginReducer(
-  state = initialState,
-  action: LoginAction,
-) {
+export default function userReducer(state = initialState, action: UserAction) {
   switch (action.type) {
-    case LoginActionTypes.SET_DATA:
+    case UserActionTypes.SET_USER_DATA:
       if (action.payload) {
         return {...state, ...action.payload};
       } else {

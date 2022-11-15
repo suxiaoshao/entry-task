@@ -10,7 +10,7 @@ import store from '../../../src/store';
 jest.mock('../../../src/store/user/actionCreator', () => {
   return {
     login: () => {
-      return {type: 'SET_DATA', payload: {token: 'token'}};
+      return {type: 'SET_USER_DATA', payload: {token: 'token'}};
     },
   };
 });

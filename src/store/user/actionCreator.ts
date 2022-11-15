@@ -1,17 +1,17 @@
 import {AppThunkAction} from '../types';
-import {LoginAction, LoginActionTypes} from './types';
+import {UserAction, UserActionTypes} from './types';
 import loginRequest, {LoginResponse} from '../../service/login';
 
 export const login =
   (username: string, password: string): AppThunkAction =>
   async dispatch => {
     const data = await loginRequest(username, password);
-    return dispatch(setToken(data));
+    return dispatch(setUserData(data));
   };
 
-export const logout = (): LoginAction => setToken(null);
+export const logout = (): UserAction => setUserData(null);
 
-export const setToken = (data: LoginResponse | null): LoginAction => ({
-  type: LoginActionTypes.SET_DATA,
+export const setUserData = (data: LoginResponse | null): UserAction => ({
+  type: UserActionTypes.SET_USER_DATA,
   payload: data,
 });

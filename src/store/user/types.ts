@@ -1,12 +1,12 @@
 import {ActionEnum} from '../types';
 
-export type LoginState = {
+export type UserState = {
   token: string;
   user: {id: number; username: string; email: string; avatar: string};
 } | null;
 
-export enum LoginActionTypes {
-  SET_DATA = 'SET_DATA',
+export enum UserActionTypes {
+  SET_USER_DATA = 'SET_USER_DATA',
 }
 
-export type LoginAction = ActionEnum<LoginActionTypes.SET_DATA, LoginState>;
+export type UserAction = ActionEnum<UserActionTypes.SET_USER_DATA, UserState>;

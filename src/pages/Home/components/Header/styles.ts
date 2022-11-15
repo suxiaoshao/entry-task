@@ -6,8 +6,8 @@ export default function useStyles() {
   return StyleSheet.create({
     container: {
       height: 40 + top,
-      backgroundColor: '#8560A9',
       paddingTop: top,
+      backgroundColor: '#8560A9',
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
