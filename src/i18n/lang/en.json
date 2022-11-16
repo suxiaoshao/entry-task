@@ -11,5 +11,13 @@
   "i_am_going": "I am going",
   "going": "Going",
   "i_like_it": "I like it",
-  "like": "Likes"
+  "like": "Likes",
+  "date": "DATE",
+  "channel": "CHANNEL",
+  "anytime": "ANYTIME",
+  "today": "TODAY",
+  "tomorrow": "TOMORROW",
+  "this_week": "THIS WEEK",
+  "this_month": "THIS MONTH",
+  "later": "LATER"
 }

@@ -39,7 +39,16 @@ export interface GetEventListRequest {
   after?: number;
 }
 
-export default async function getEventListRequest() {
+export default async function getEventListRequest(search: GetEventListRequest) {
+  const searchParams = new URLSearchParams();
+  for (const key in search) {
+    if (typeof search[key as keyof GetEventListRequest] === 'string') {
+      searchParams.append(
+        key,
+        <string>search[key as keyof GetEventListRequest],
+      );
+    }
+  }
   const data = await appRequest<GetEventListRequest, GetEventListResponse>(
     '/events',
     'GET',

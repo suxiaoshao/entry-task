@@ -1,9 +1,9 @@
 import React from 'react';
 import {Image, Text, View} from 'react-native';
-import Channel from '../../../../components/Channel';
-import GoingButton from '../../../../components/GoingButton';
-import LikeButton from '../../../../components/LikeButton';
-import {EventItem} from '../../../../service/getEventList';
+import Channel from '../../../../../../components/Channel';
+import GoingButton from '../../../../../../components/GoingButton';
+import LikeButton from '../../../../../../components/LikeButton';
+import {EventItem} from '../../../../../../service/getEventList';
 import styles from './styles';
 import Time from './Time';
 
@@ -37,7 +37,7 @@ export default function ({
       </View>
       <View style={styles.content}>
         <View style={styles.contentLeft}>
-          <Text style={styles.title}>{name}</Text>
+          <Text style={styles.titleText}>{name}</Text>
           <Time begin_time={begin_time} end_time={end_time} />
           <Text
             numberOfLines={3}

@@ -4,4 +4,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
+  divider: {
+    marginLeft: 16,
+  },
 });

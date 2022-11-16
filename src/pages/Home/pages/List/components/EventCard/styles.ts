@@ -31,7 +31,7 @@ export default StyleSheet.create({
   contentLeft: {
     flex: 1,
   },
-  title: {
+  titleText: {
     marginTop: 8,
     fontStyle: 'normal',
     fontWeight: '600',

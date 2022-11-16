@@ -1,14 +1,24 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {ChannelItem} from '../../service/getChannelList';
+import {
+  StyleProp,
+  Text,
+  TextStyle,
+  View,
+  ViewProps,
+  ViewStyle,
+} from 'react-native';
+import {ChannelItem} from '@/service/getChannelList';
 import styles from './styles';
 
-export interface ChannelProps extends ChannelItem {}
+export interface ChannelProps extends ChannelItem, Omit<ViewProps, 'style'> {
+  boxStyle?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+}
 
-export default function ({name}: ChannelProps) {
+export default function ({name, boxStyle, textStyle, ...props}: ChannelProps) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{name}</Text>
+    <View {...props} style={[styles.container, boxStyle]}>
+      <Text style={[styles.text, textStyle]}>{name}</Text>
     </View>
   );
 }
