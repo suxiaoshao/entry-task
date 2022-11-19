@@ -1,5 +1,4 @@
 {
-  "home_name": "Home",
   "detail_name": "Detail",
   "me_name": "Me",
   "sing_in": "SING IN",
@@ -8,5 +7,25 @@
   "username_placeholder": "Username",
   "password_placeholder": "Password",
   "username_error": "Username format is incorrect",
-  "password_error": "Password format is incorrect"
+  "password_error": "Password format is incorrect",
+  "i_am_going": "I am going",
+  "going": "Going",
+  "i_like_it": "I like it",
+  "like": "Likes",
+  "date": "DATE",
+  "channel": "CHANNEL",
+  "anytime": "ANYTIME",
+  "today": "TODAY",
+  "tomorrow": "TOMORROW",
+  "this_week": "THIS WEEK",
+  "this_month": "THIS MONTH",
+  "later": "LATER",
+  "all": "All",
+  "search": "SEARCH",
+  "activities": "activities",
+  "channel2": "Channel",
+  "from": "from",
+  "to": "to",
+  "results": "Results",
+  "clear": "CLEAR SEARCH"
 }

@@ -1,8 +1,12 @@
 import {combineReducers} from 'redux';
-import loginReducer from './login/reducer';
+import userReducer from './user/reducer';
+import eventReducer from './eventList/reducer';
+import channelReducer from './channel/reducer';
 
 const reducers = combineReducers({
-  login: loginReducer,
+  user: userReducer,
+  eventList: eventReducer,
+  channelList: channelReducer,
 });
 
 export default reducers;

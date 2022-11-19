@@ -7,10 +7,10 @@ import {renderWithProviders} from '../../config/renderWithProviders';
 import InputContent from '../../../src/pages/Login/components/InputContent';
 import Input from '../../../src/components/Input';
 import store from '../../../src/store';
-jest.mock('../../../src/store/login/actionCreator', () => {
+jest.mock('../../../src/store/user/actionCreator', () => {
   return {
     login: () => {
-      return {type: 'SET_TOKEN', payload: 'token'};
+      return {type: 'SET_USER_DATA', payload: {token: 'token'}};
     },
   };
 });
@@ -53,6 +53,6 @@ describe('Login', () => {
     act(() => {
       button.props.onPress();
     });
-    expect(store.getState().login.token).toBe('token');
+    expect(store.getState().user?.token).toBe('token');
   });
 });

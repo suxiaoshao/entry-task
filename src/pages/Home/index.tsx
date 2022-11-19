@@ -1,12 +1,21 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import useI18n from '../../i18n/useI18n';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import List from './pages/List';
+import Search from './pages/Search';
+
+const Drawer = createDrawerNavigator();
 
 export default function () {
-  const t = useI18n();
   return (
-    <View>
-      <Text>{t('home_name')}</Text>
-    </View>
+    <Drawer.Navigator
+      screenOptions={{
+        headerShown: false,
+        drawerStyle: {backgroundColor: 'transparent'},
+        swipeEnabled: false,
+      }}
+      initialRouteName="List"
+      drawerContent={Search}>
+      <Drawer.Screen options={{}} name="List" component={List} />
+    </Drawer.Navigator>
   );
 }

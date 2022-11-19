@@ -10,7 +10,7 @@ export default function () {
   return (
     <View style={styles.topContent}>
       <Text style={styles.desc}>{t('sing_in_desc')}</Text>
-      <Text style={styles.title}>{t('sing_in_title')}</Text>
+      <Text style={styles.titleText}>{t('sing_in_title')}</Text>
       <View style={styles.logoContainer}>
         <View style={styles.logoBorder}>
           <Image style={styles.logo} source={logo} />

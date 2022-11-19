@@ -3,8 +3,6 @@ import {initReactI18next} from 'react-i18next';
 import * as RNLocalize from 'react-native-localize';
 import en from './lang/en.json';
 
-console.log('RNLocalize', RNLocalize);
-
 const locales = RNLocalize.getLocales();
 const systemLanguage = locales[0]?.languageCode;
 
