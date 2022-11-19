@@ -25,5 +25,7 @@
   "activities": "activities",
   "channel2": "Channel",
   "from": "from",
-  "to": "to"
+  "to": "to",
+  "results": "Results",
+  "clear": "CLEAR SEARCH"
 }

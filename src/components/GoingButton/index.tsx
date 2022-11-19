@@ -13,7 +13,6 @@ export interface GoingButtonProps extends PressableProps {
 export default function GoingButton({
   me_going,
   goings_count,
-  style,
   ...props
 }: GoingButtonProps) {
   const t = useI18n();

@@ -41,16 +41,13 @@ export interface GetEventListRequest {
 
 export default async function getEventListRequest(search: GetEventListRequest) {
   const searchParams = new URLSearchParams();
-  for (const key in search) {
-    if (typeof search[key as keyof GetEventListRequest] === 'string') {
-      searchParams.append(
-        key,
-        <string>search[key as keyof GetEventListRequest],
-      );
+  Object.entries(search).forEach(([key, value]) => {
+    if (value) {
+      searchParams.append(key, value.toString());
     }
-  }
+  });
   const data = await appRequest<GetEventListRequest, GetEventListResponse>(
-    '/events',
+    `/events?${searchParams.toString()}`,
     'GET',
   );
   return data;

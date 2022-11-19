@@ -2,7 +2,7 @@ import {EventListAction, EventListActionTypes, EventListState} from './types';
 
 const initialState: EventListState = {
   data: null,
-  search: {channels: [], time: {type: 'anytime'}},
+  search: null,
 };
 
 export default function loginReducer(
@@ -14,6 +14,18 @@ export default function loginReducer(
       return {...state, data: action.payload};
     case EventListActionTypes.SET_EVENT_LIST_SEARCH:
       return {...state, search: action.payload};
+    case EventListActionTypes.SET_EVENT_LIST_DATA_MORE:
+      if (state.data === null) {
+        return {...state, data: action.payload};
+      } else {
+        return {
+          ...state,
+          data: {
+            ...action.payload,
+            events: [...state.data.events, ...action.payload.events],
+          },
+        };
+      }
     default:
       return state;
   }

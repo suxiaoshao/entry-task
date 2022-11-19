@@ -1,4 +1,4 @@
-import {Enum} from "@/utils/types";
+import {Enum} from '@/utils/types';
 
 export type UserState = {
   token: string;

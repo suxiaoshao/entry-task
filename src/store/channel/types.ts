@@ -1,5 +1,5 @@
 import {ChannelItem} from '@/service/getChannelList';
-import {Enum} from "@/utils/types";
+import {Enum} from '@/utils/types';
 
 export type ChannelListState = {
   data: ChannelItem[];

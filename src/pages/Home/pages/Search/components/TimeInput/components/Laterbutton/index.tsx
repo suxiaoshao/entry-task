@@ -20,7 +20,7 @@ export default function ({time, setTime}: LaterButtonProps) {
   const selected = useMemo(() => time?.type === 'later', [time]);
   const onPress = useCallback(() => {
     setTime({type: 'later', payload: today()});
-  }, []);
+  }, [setTime]);
 
   return (
     <>

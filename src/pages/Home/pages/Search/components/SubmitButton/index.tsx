@@ -1,5 +1,5 @@
 import useI18n from '@/i18n/useI18n';
-import {setEventListSearch} from '@/store/eventList/actionCreator';
+import {setSearchAndFetchEventList} from '@/store/eventList/actionCreator';
 import {EventListSearchTime} from '@/store/eventList/types';
 import {useAppDispatch} from '@/store/types';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
@@ -29,7 +29,7 @@ export default function ({time, channels}: SubmitButtonProps) {
       style={[styles.button, active && styles.buttonActive]}
       onPress={() => {
         if (time !== undefined && channels !== undefined) {
-          dispatch(setEventListSearch({time, channels}));
+          dispatch(setSearchAndFetchEventList({time, channels}));
           navigation.dispatch(DrawerActions.closeDrawer());
         }
       }}

@@ -6,7 +6,7 @@ import {Enum} from '@/utils/types';
 
 export type EventListState = {
   data: GetEventListResponse | null;
-  search: EventListSearch;
+  search: EventListSearch | null;
 };
 
 export type EventListSearchTimeValue = Pick<
@@ -30,8 +30,10 @@ export interface EventListSearch {
 export enum EventListActionTypes {
   SET_EVENT_LIST_DATA = 'SET_EVENT_LIST_DATA',
   SET_EVENT_LIST_SEARCH = 'SET_EVENT_LIST_SEARCH',
+  SET_EVENT_LIST_DATA_MORE = 'SET_EVENT_LIST_DATA_MORE',
 }
 
 export type EventListAction =
   | Enum<EventListActionTypes.SET_EVENT_LIST_DATA, GetEventListResponse | null>
-  | Enum<EventListActionTypes.SET_EVENT_LIST_SEARCH, EventListSearch>;
+  | Enum<EventListActionTypes.SET_EVENT_LIST_SEARCH, EventListSearch | null>
+  | Enum<EventListActionTypes.SET_EVENT_LIST_DATA_MORE, GetEventListResponse>;
