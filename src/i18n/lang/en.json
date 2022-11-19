@@ -19,5 +19,11 @@
   "tomorrow": "TOMORROW",
   "this_week": "THIS WEEK",
   "this_month": "THIS MONTH",
-  "later": "LATER"
+  "later": "LATER",
+  "all": "All",
+  "search": "SEARCH",
+  "activities": "activities",
+  "channel2": "Channel",
+  "from": "from",
+  "to": "to"
 }

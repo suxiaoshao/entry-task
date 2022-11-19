@@ -1,4 +1,4 @@
-import {ActionEnum} from '../types';
+import {Enum} from "@/utils/types";
 
 export type UserState = {
   token: string;
@@ -9,4 +9,4 @@ export enum UserActionTypes {
   SET_USER_DATA = 'SET_USER_DATA',
 }
 
-export type UserAction = ActionEnum<UserActionTypes.SET_USER_DATA, UserState>;
+export type UserAction = Enum<UserActionTypes.SET_USER_DATA, UserState>;

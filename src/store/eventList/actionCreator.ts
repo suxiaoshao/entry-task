@@ -2,7 +2,6 @@ import {AppThunkAction} from '../types';
 import getEventListRequest, {
   GetEventListResponse,
 } from '@/service/getEventList';
-import {thisMonth, thisWeek, today, tomorrow} from '@/utils/formatTime';
 import {EventListAction, EventListActionTypes, EventListSearch} from './types';
 
 export const fetchEventData =
@@ -23,31 +22,7 @@ export const setEventListData = (
   payload: data,
 });
 
-export const setEventListSearchChannels = (
-  data: number[] | null,
-): EventListAction => ({
-  type: EventListActionTypes.SET_EVENT_LIST_SEARCH_CHANNELS,
+export const setEventListSearch = (data: EventListSearch): EventListAction => ({
+  type: EventListActionTypes.SET_EVENT_LIST_SEARCH,
   payload: data,
 });
-
-export const setEventListSearchTime = (
-  data: Pick<EventListSearch, 'before' | 'after'>,
-): EventListAction => ({
-  type: EventListActionTypes.SET_EVENT_LIST_SEARCH_TIME,
-  payload: data,
-});
-
-export const setEventListSearchToday = (): EventListAction =>
-  setEventListSearchTime(today());
-
-export const setEventListSearchTomorrow = (): EventListAction =>
-  setEventListSearchTime(tomorrow());
-
-export const setEventListSearchThisWeek = (): EventListAction =>
-  setEventListSearchTime(thisWeek());
-
-export const setEventListSearchThisMonth = (): EventListAction =>
-  setEventListSearchTime(thisMonth());
-
-export const setEventListSearchAll = (): EventListAction =>
-  setEventListSearchTime({});

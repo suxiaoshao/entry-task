@@ -1,36 +1,37 @@
-import {GetEventListResponse} from '@/service/getEventList';
-import {ActionEnum} from '../types';
-import {ChannelItem} from '@/service/getChannelList';
+import {
+  GetEventListRequest,
+  GetEventListResponse,
+} from '@/service/getEventList';
+import {Enum} from '@/utils/types';
 
 export type EventListState = {
   data: GetEventListResponse | null;
   search: EventListSearch;
 };
 
+export type EventListSearchTimeValue = Pick<
+  GetEventListRequest,
+  'before' | 'after'
+>;
+
+export type EventListSearchTime =
+  | Enum<'today'>
+  | Enum<'tomorrow'>
+  | Enum<'thisWeek'>
+  | Enum<'thisMonth'>
+  | Enum<'anytime'>
+  | Enum<'later', EventListSearchTimeValue>;
+
 export interface EventListSearch {
-  channels?: number[];
-  offset?: number;
-  limit?: number;
-  before?: number;
-  after?: number;
+  channels: number[];
+  time: EventListSearchTime;
 }
 
 export enum EventListActionTypes {
   SET_EVENT_LIST_DATA = 'SET_EVENT_LIST_DATA',
-  SET_EVENT_LIST_SEARCH_CHANNELS = 'SET_EVENT_LIST_SEARCH_CHANNELS',
-  SET_EVENT_LIST_SEARCH_TIME = 'SET_EVENT_LIST_SEARCH_TIME',
+  SET_EVENT_LIST_SEARCH = 'SET_EVENT_LIST_SEARCH',
 }
 
 export type EventListAction =
-  | ActionEnum<
-      EventListActionTypes.SET_EVENT_LIST_DATA,
-      GetEventListResponse | null
-    >
-  | ActionEnum<
-      EventListActionTypes.SET_EVENT_LIST_SEARCH_CHANNELS,
-      number[] | null
-    >
-  | ActionEnum<
-      EventListActionTypes.SET_EVENT_LIST_SEARCH_TIME,
-      Pick<EventListSearch, 'before' | 'after'>
-    >;
+  | Enum<EventListActionTypes.SET_EVENT_LIST_DATA, GetEventListResponse | null>
+  | Enum<EventListActionTypes.SET_EVENT_LIST_SEARCH, EventListSearch>;

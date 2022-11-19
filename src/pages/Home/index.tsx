@@ -8,10 +8,14 @@ const Drawer = createDrawerNavigator();
 export default function () {
   return (
     <Drawer.Navigator
-      screenOptions={{headerShown: false}}
+      screenOptions={{
+        headerShown: false,
+        drawerStyle: {backgroundColor: 'transparent'},
+        swipeEnabled: false,
+      }}
       initialRouteName="List"
       drawerContent={Search}>
-      <Drawer.Screen name="List" component={List} />
+      <Drawer.Screen options={{}} name="List" component={List} />
     </Drawer.Navigator>
   );
 }

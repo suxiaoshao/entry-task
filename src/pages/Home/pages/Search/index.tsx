@@ -1,41 +1,22 @@
-import useI18n from '@/i18n/useI18n';
-import React from 'react';
-import {Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {View} from 'react-native';
+import TimeInput from './components/TimeInput';
 import useStyles from './styles';
-import {useAppSelector} from '@/store/types';
-import Channel from '@/components/Channel';
-import TimeButton from '@/pages/Home/pages/Search/components/TimeButton';
+import ChannelsInput from '@/pages/Home/pages/Search/components/ChannelsInput';
+import {EventListSearchTime} from '@/store/eventList/types';
+import SubmitButton from './components/SubmitButton';
 
 export default function () {
   const styles = useStyles();
-  const t = useI18n();
-  const channels = useAppSelector(state => state.channelList?.data);
+  const [time, setTime] = useState<EventListSearchTime>();
+  const [channels, setChannels] = useState<number[]>();
   return (
     <View style={styles.container}>
-      <View style={styles.title}>
-        <Text style={styles.titleText}>{t('date')}</Text>
+      <View style={styles.form}>
+        <TimeInput time={time} setTime={setTime} />
+        <ChannelsInput channels={channels} setChannels={setChannels} />
       </View>
-      <View style={styles.timeList}>
-        <TimeButton>{t('anytime')}</TimeButton>
-        <TimeButton>{t('today')}</TimeButton>
-        <TimeButton>{t('tomorrow')}</TimeButton>
-        <TimeButton>{t('this_week')}</TimeButton>
-        <TimeButton>{t('this_month')}</TimeButton>
-        <TimeButton>{t('later')}</TimeButton>
-      </View>
-      <View style={[styles.title, styles.channelTitle]}>
-        <Text style={styles.titleText}>{t('channel')}</Text>
-      </View>
-      <View style={styles.channelList}>
-        {channels?.map(channel => (
-          <Channel
-            {...channel}
-            key={channel.id}
-            boxStyle={styles.channelBox}
-            textStyle={styles.channelText}
-          />
-        ))}
-      </View>
+      <SubmitButton time={time} channels={channels} />
     </View>
   );
 }
