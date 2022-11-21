@@ -21,14 +21,16 @@ export interface EventItem {
   location_detail: string;
   images: string[];
   channel: ChannelItem;
-  creator: {
-    avatar: string;
-    createdAt: string;
-    email: string;
-    id: number;
-    updatedAt: string;
-    username: string;
-  };
+  creator: EventCreator;
+}
+
+export interface EventCreator {
+  avatar: string;
+  createdAt: string;
+  email: string;
+  id: number;
+  updatedAt: string;
+  username: string;
 }
 
 export interface GetEventListRequest {
@@ -46,7 +48,7 @@ export default async function getEventListRequest(search: GetEventListRequest) {
       searchParams.append(key, value.toString());
     }
   });
-  const data = await appRequest<GetEventListRequest, GetEventListResponse>(
+  const data = await appRequest<undefined, GetEventListResponse>(
     `/events?${searchParams.toString()}`,
     'GET',
   );

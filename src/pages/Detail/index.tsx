@@ -1,12 +1,36 @@
-import React from 'react';
-import {View, Text} from 'react-native';
-import useI18n from '../../i18n/useI18n';
+import {RouterData} from '@/components/AppRouter';
+import Header from '@/components/Header';
+import useRequest from '@/hooks/useRequest';
+import getEventRequest from '@/service/getEvent';
+import {
+  NavigationProp,
+  RouteProp,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
+import React, {useCallback} from 'react';
+import {View} from 'react-native';
+import Warper from './components/Warper';
+import styles from './styles';
+
+const homeIcon = require('@assets/common/home.png');
 
 export default function () {
-  const t = useI18n();
+  const navigation = useNavigation<NavigationProp<RouterData>>();
+  const id = useRoute<RouteProp<RouterData>>().params?.id;
+  if (!id) {
+    navigation.navigate('Home');
+    return null;
+  }
+  const fetch = useCallback(async () => getEventRequest(id), [id]);
+  const [data, refetch] = useRequest(fetch, 'onFnChange');
   return (
-    <View>
-      <Text>{t('detail_name')}</Text>
+    <View style={styles.container}>
+      <Header
+        leftIcon={homeIcon}
+        onLeftPress={() => navigation.navigate('Home')}
+      />
+      <Warper data={data} refetch={refetch} />
     </View>
   );
 }

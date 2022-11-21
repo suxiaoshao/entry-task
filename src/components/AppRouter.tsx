@@ -35,7 +35,7 @@ export default function AppRouter() {
 export type RouterData = {
   Me: undefined;
   Home: undefined;
-  Detail: undefined;
+  Detail: {id: number};
   Login: undefined;
 };
 export type RouterName = keyof RouterData;

@@ -1,8 +1,11 @@
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import {
   EventListSearchTime,
   EventListSearchTimeValue,
 } from '@/store/eventList/types';
-import dayjs from 'dayjs';
+
+dayjs.extend(relativeTime);
 
 export function formatDateLarge(time: string): string {
   return dayjs(time).format('DD MMM YYYY HH:mm');
@@ -76,4 +79,8 @@ export function getBeginEndTime(
         after: date.payload.after,
       };
   }
+}
+
+export function fromNow(time: string): string {
+  return dayjs(time).fromNow();
 }
