@@ -19,6 +19,7 @@ export interface EventItem {
   description: string;
   create_time: string;
   location_detail: string;
+  location: string;
   images: string[];
   channel: ChannelItem;
   creator: EventCreator;

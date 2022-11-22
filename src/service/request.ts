@@ -2,14 +2,13 @@ import {Enum} from '@/utils/types';
 import {Alert} from 'react-native';
 import store from '../store';
 
-const URL_BASE = 'http://sec.dev.fsg2.test.shopee.io/entrytask/api/v1';
+const URL_BASE = 'http://localhost:3000/api/v1';
 export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-export interface ResponseData<DATA extends object> {
-  code: number;
-  message: string;
-  data: DATA;
-}
+export type ResponseData<DATA extends object> =
+  | {
+      error?: string;
+    } & DATA;
 
 export default async function appRequest<
   Req extends object | undefined,
@@ -37,17 +36,15 @@ export default async function appRequest<
     });
     try {
       const data: ResponseData<Res> = await response.json();
-      if (data.code === 0 && data.data) {
-        return {type: 'ok', payload: data.data} as ResponseType<Res>;
+      if (data.error === undefined && data) {
+        return {type: 'ok', payload: data} as ResponseType<Res>;
       } else {
         // be api error
-        Alert.alert('Error', data.message);
-        return {type: 'apiError', payload: new Error(data.message)};
+        return {type: 'apiError', payload: new Error(data.error)};
       }
     } catch (err) {
       // json parse error
       if (err instanceof Error) {
-        Alert.alert('Error', err.message);
         return {type: 'jsonError', payload: err};
       }
       return {type: 'unknown'};
@@ -55,7 +52,6 @@ export default async function appRequest<
   } catch (err) {
     // network error
     if (err instanceof Error) {
-      Alert.alert('Error', err.message);
       return {type: 'networkError', payload: err};
     }
     return {type: 'unknown'};

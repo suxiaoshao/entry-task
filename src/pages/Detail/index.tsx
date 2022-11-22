@@ -10,7 +10,7 @@ import {
 } from '@react-navigation/native';
 import React, {useCallback} from 'react';
 import {View} from 'react-native';
-import Warper from './components/Warper';
+import Warper from './components/Content';
 import styles from './styles';
 
 const homeIcon = require('@assets/common/home.png');

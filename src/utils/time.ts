@@ -15,6 +15,24 @@ export function formatDateSmall(time: number): string {
   return dayjs(time).format('DD/MM');
 }
 
+export function formatDateMiddle(
+  date?: string | number | dayjs.Dayjs | Date | null | undefined,
+): string {
+  return dayjs(date).format('DD MMM YYYY');
+}
+
+export function formatTimeHour(
+  date?: string | number | dayjs.Dayjs | Date | null | undefined,
+): string {
+  return dayjs(date).format('h:mm');
+}
+
+export function formatTimeAP(
+  date?: string | number | dayjs.Dayjs | Date | null | undefined,
+): string {
+  return dayjs(date).format('a');
+}
+
 export function today(): EventListSearchTimeValue {
   const now = dayjs();
   const before = now.startOf('day');

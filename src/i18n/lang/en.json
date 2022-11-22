@@ -35,5 +35,7 @@
   "published": "Published",
   "details": "Details",
   "participants": "Participants",
-  "comments": "Comments"
+  "comments": "Comments",
+  "where": "Where",
+  "when": "When"
 }
