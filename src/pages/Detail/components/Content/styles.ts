@@ -19,4 +19,14 @@ export default StyleSheet.create({
     color: '#453257',
     marginTop: 12,
   },
+  divider: {
+    marginTop: 16,
+  },
+  left: {
+    width: 80,
+    marginTop: 4.5,
+  },
+  dividerLess4: {
+    marginTop: 4,
+  },
 });

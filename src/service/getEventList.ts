@@ -22,10 +22,10 @@ export interface EventItem {
   location: string;
   images: string[];
   channel: ChannelItem;
-  creator: EventCreator;
+  creator: UserItem;
 }
 
-export interface EventCreator {
+export interface UserItem {
   avatar: string;
   createdAt: string;
   email: string;

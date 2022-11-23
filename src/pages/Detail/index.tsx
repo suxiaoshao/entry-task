@@ -1,14 +1,14 @@
 import {RouterData} from '@/components/AppRouter';
 import Header from '@/components/Header';
-import useRequest from '@/hooks/useRequest';
-import getEventRequest from '@/service/getEvent';
+import {fetchEventDetailData} from '@/store/eventDetail/actionCreator';
+import {useAppDispatch} from '@/store/types';
 import {
   NavigationProp,
   RouteProp,
   useNavigation,
   useRoute,
 } from '@react-navigation/native';
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {View} from 'react-native';
 import Warper from './components/Content';
 import styles from './styles';
@@ -22,15 +22,21 @@ export default function () {
     navigation.navigate('Home');
     return null;
   }
-  const fetch = useCallback(async () => getEventRequest(id), [id]);
-  const [data, refetch] = useRequest(fetch, 'onFnChange');
+  const dispatch = useAppDispatch();
+  const fetch = useCallback(
+    () => dispatch(fetchEventDetailData(id)),
+    [dispatch, id],
+  );
+  useEffect(() => {
+    fetch();
+  }, [fetch]);
   return (
     <View style={styles.container}>
       <Header
         leftIcon={homeIcon}
         onLeftPress={() => navigation.navigate('Home')}
       />
-      <Warper data={data} refetch={refetch} />
+      <Warper refetch={fetch} />
     </View>
   );
 }

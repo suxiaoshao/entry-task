@@ -1,11 +1,11 @@
 import useI18n from '@/i18n/useI18n';
-import {EventCreator} from '@/service/getEventList';
+import {UserItem} from '@/service/getEventList';
 import {fromNow} from '@/utils/time';
 import React from 'react';
 import {View, Image, Text} from 'react-native';
 import styles from './styles';
 
-export interface CreatorProps extends EventCreator {}
+export interface CreatorProps extends UserItem {}
 
 export default function ({avatar, username, createdAt}: CreatorProps) {
   const t = useI18n();
