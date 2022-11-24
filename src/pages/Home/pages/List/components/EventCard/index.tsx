@@ -1,9 +1,11 @@
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, Pressable, Text, View} from 'react-native';
+import {EventItem} from '@/service/getEventList';
+import {RouterData} from '@/components/AppRouter';
 import Channel from '../../../../../../components/Channel';
 import GoingButton from '../../../../../../components/GoingButton';
 import LikeButton from '../../../../../../components/LikeButton';
-import {EventItem} from '../../../../../../service/getEventList';
 import styles from './styles';
 import Time from './Time';
 
@@ -24,10 +26,14 @@ export default function ({
     goings_count,
     me_likes,
     likes_count,
+    id,
   },
 }: EventCardProps) {
+  const navigator = useNavigation<NavigationProp<RouterData>>();
   return (
-    <View style={styles.container}>
+    <Pressable
+      style={styles.container}
+      onPress={() => navigator.navigate('Detail', {id})}>
       <View style={styles.top}>
         <View style={styles.creator}>
           <Image style={styles.avatar} source={{uri: creator.avatar}} />
@@ -58,6 +64,6 @@ export default function ({
           likes_count={likes_count}
         />
       </View>
-    </View>
+    </Pressable>
   );
 }

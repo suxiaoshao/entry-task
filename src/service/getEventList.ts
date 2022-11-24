@@ -19,16 +19,19 @@ export interface EventItem {
   description: string;
   create_time: string;
   location_detail: string;
+  location: string;
   images: string[];
   channel: ChannelItem;
-  creator: {
-    avatar: string;
-    createdAt: string;
-    email: string;
-    id: number;
-    updatedAt: string;
-    username: string;
-  };
+  creator: UserItem;
+}
+
+export interface UserItem {
+  avatar: string;
+  createdAt: string;
+  email: string;
+  id: number;
+  updatedAt: string;
+  username: string;
 }
 
 export interface GetEventListRequest {
@@ -46,7 +49,7 @@ export default async function getEventListRequest(search: GetEventListRequest) {
       searchParams.append(key, value.toString());
     }
   });
-  const data = await appRequest<GetEventListRequest, GetEventListResponse>(
+  const data = await appRequest<undefined, GetEventListResponse>(
     `/events?${searchParams.toString()}`,
     'GET',
   );

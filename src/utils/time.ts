@@ -1,8 +1,11 @@
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import {
   EventListSearchTime,
   EventListSearchTimeValue,
 } from '@/store/eventList/types';
-import dayjs from 'dayjs';
+
+dayjs.extend(relativeTime);
 
 export function formatDateLarge(time: string): string {
   return dayjs(time).format('DD MMM YYYY HH:mm');
@@ -10,6 +13,24 @@ export function formatDateLarge(time: string): string {
 
 export function formatDateSmall(time: number): string {
   return dayjs(time).format('DD/MM');
+}
+
+export function formatDateMiddle(
+  date?: string | number | dayjs.Dayjs | Date | null | undefined,
+): string {
+  return dayjs(date).format('DD MMM YYYY');
+}
+
+export function formatTimeHour(
+  date?: string | number | dayjs.Dayjs | Date | null | undefined,
+): string {
+  return dayjs(date).format('h:mm');
+}
+
+export function formatTimeAP(
+  date?: string | number | dayjs.Dayjs | Date | null | undefined,
+): string {
+  return dayjs(date).format('a');
 }
 
 export function today(): EventListSearchTimeValue {
@@ -76,4 +97,8 @@ export function getBeginEndTime(
         after: date.payload.after,
       };
   }
+}
+
+export function fromNow(time: string): string {
+  return dayjs(time).fromNow();
 }

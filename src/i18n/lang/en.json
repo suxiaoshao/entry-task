@@ -1,5 +1,4 @@
 {
-  "detail_name": "Detail",
   "me_name": "Me",
   "sing_in": "SING IN",
   "sing_in_desc": "FIND THE MOST LOVED ACTIVITIES",
@@ -27,5 +26,18 @@
   "from": "from",
   "to": "to",
   "results": "Results",
-  "clear": "CLEAR SEARCH"
+  "clear": "CLEAR SEARCH",
+  "loading": "Loading...",
+  "network_error": "Seems like your network is offline. Please check your internet connection and try again.",
+  "try_again": "Try Again",
+  "api_error1": "Oops, the bank list is currently unavailable.",
+  "api_error2": "Please come back later and try again.",
+  "published": "Published",
+  "details": "Details",
+  "participants": "Participants",
+  "comments": "Comments",
+  "where": "Where",
+  "when": "When",
+  "join": "Join",
+  "comment_placeholder": "Leave your comment here"
 }

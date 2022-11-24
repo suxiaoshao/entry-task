@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {I18nextProvider} from 'react-i18next';
+import {Provider} from 'react-redux';
 import i18n from './i18n';
 import AppRouter from './components/AppRouter';
-import {Provider} from 'react-redux';
 import store from './store';
 
 function App() {

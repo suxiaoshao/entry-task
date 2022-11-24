@@ -10,6 +10,7 @@ import {
   EventListSearchTimeValue,
 } from './types';
 import {thisMonth, thisWeek, today, tomorrow} from '@/utils/time';
+import {toastResponse} from '@/service/request';
 
 export const setSearchAndFetchEventList =
   (data: EventListSearch | null): AppThunkAction =>
@@ -17,7 +18,10 @@ export const setSearchAndFetchEventList =
     dispatch(setEventListSearch(data));
     const searchParams = getRequestData(data);
     const result = await getEventListRequest(searchParams);
-    return dispatch(setEventListData(result));
+    toastResponse(result);
+    if (result.type === 'ok') {
+      return dispatch(setEventListData(result.payload));
+    }
   };
 
 export const fetchEventData =
@@ -25,7 +29,10 @@ export const fetchEventData =
     const search = getState().eventList.search;
     const searchParams = getRequestData(search);
     const data = await getEventListRequest(searchParams);
-    return dispatch(setEventListData(data));
+    toastResponse(data);
+    if (data.type === 'ok') {
+      return dispatch(setEventListData(data.payload));
+    }
   };
 
 export const fetchEventDataMore =
@@ -34,7 +41,10 @@ export const fetchEventDataMore =
     const count = getState().eventList.data?.events.length;
     const searchParams = getRequestData(search, count);
     const data = await getEventListRequest(searchParams);
-    return dispatch(setEventListDataMore(data));
+    toastResponse(data);
+    if (data.type === 'ok') {
+      return dispatch(setEventListDataMore(data.payload));
+    }
   };
 function getRequestData(
   search: EventListSearch | null,
