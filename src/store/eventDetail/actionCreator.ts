@@ -2,8 +2,8 @@ import {AppThunkAction} from '../types';
 import {
   EventDetailAction,
   EventDetailActionTypes,
-  EventDetailState,
   EventDetail,
+  EventDetailFooterStatus,
 } from './types';
 import {ResponseType, toastResponse} from '@/service/request';
 import getEventRequest, {GetEventResponse} from '@/service/getEvent';
@@ -16,11 +16,18 @@ import getEventLikesRequest, {
 import getEventParticipantsRequest, {
   GetEventParticipantsResponse,
 } from '@/service/getEventParticipants';
+import {ResponseTypeWithStatus} from '@/hooks/useRequest';
+import {UserItem} from '@/service/getEventList';
 
 export const fetchEventDetailData =
   (id: number): AppThunkAction =>
   async dispatch => {
     dispatch(setEventDetailData({type: 'loading'}));
+    dispatch(fetchEventDetailDataUnLoading(id));
+  };
+export const fetchEventDetailDataUnLoading =
+  (id: number): AppThunkAction =>
+  async dispatch => {
     const promises = [
       getEventRequest(id),
       getEventParticipantsRequest(id),
@@ -75,8 +82,28 @@ function mapResponseList([detail, participants, likes, comments]: [
     ],
   };
 }
-export const setEventDetailData = (data: EventDetailState): EventDetailAction =>
+export const setEventDetailData = (
+  data: ResponseTypeWithStatus<EventDetail>,
+): EventDetailAction =>
   ({
     type: EventDetailActionTypes.SET_EVENT_DETAIL_DATA,
-    payload: data as EventDetailState,
+    payload: data,
   } as EventDetailAction);
+
+export const setEventDetailFooterStatus = (
+  data: EventDetailFooterStatus,
+): EventDetailAction =>
+  ({
+    type: EventDetailActionTypes.SET_EVENT_DETAIL_FOOTER_STATUS,
+    payload: data,
+  } as EventDetailAction);
+
+export const setEventDetailFooterStatusInit = (): EventDetailAction =>
+  setEventDetailFooterStatus({type: 'init'});
+
+export const setEventDetailFooterStatusComment = (
+  user?: UserItem,
+): EventDetailAction =>
+  user
+    ? setEventDetailFooterStatus({type: 'commentWithUser', payload: user})
+    : setEventDetailFooterStatus({type: 'comment'});

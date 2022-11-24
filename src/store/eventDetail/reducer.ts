@@ -4,7 +4,10 @@ import {
   EventDetailState,
 } from './types';
 
-const initialState: EventDetailState = {type: 'init'};
+const initialState: EventDetailState = {
+  event: {type: 'init'},
+  footerStatus: {type: 'init'},
+};
 
 export default function eventDetailReducer(
   state = initialState,
@@ -12,7 +15,9 @@ export default function eventDetailReducer(
 ): EventDetailState {
   switch (action.type) {
     case EventDetailActionTypes.SET_EVENT_DETAIL_DATA:
-      return {...state, ...action.payload};
+      return {...state, event: action.payload};
+    case EventDetailActionTypes.SET_EVENT_DETAIL_FOOTER_STATUS:
+      return {...state, footerStatus: action.payload};
     default:
       return state;
   }

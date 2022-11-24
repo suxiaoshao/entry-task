@@ -15,6 +15,7 @@ import styles from './styles';
 import GoingButton from '@/components/GoingButton';
 import LikeButton from '@/components/LikeButton';
 import Comments from '../Comments';
+import Footer from '../Footer';
 
 export interface ContentProps {
   data: EventDetail;
@@ -35,41 +36,44 @@ function Content({
 }: ContentProps) {
   const [active, setActive] = React.useState<ActiveType>('detail');
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.channelBox}>
-          <Channel {...channel} />
+    <>
+      <ScrollView style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.channelBox}>
+            <Channel {...channel} />
+          </View>
+          <Text style={styles.title}>{name}</Text>
+          <Creator {...creator} />
         </View>
-        <Text style={styles.title}>{name}</Text>
-        <Creator {...creator} />
-      </View>
-      <Tab active={active} setActive={setActive} />
-      <DetailTab {...data} />
-      <Divider style={styles.divider} />
-      <Users
-        left={
-          <GoingButton
-            style={styles.left}
-            me_going={me_going}
-            goings_count={participants.length}
-          />
-        }
-        divider
-        users={participants}
-      />
-      <Users
-        left={
-          <LikeButton
-            style={styles.left}
-            me_likes={me_likes}
-            likes_count={likes.length}
-          />
-        }
-        users={likes}
-      />
-      <Divider style={styles.dividerLess4} />
-      <Comments comments={comments} />
-    </ScrollView>
+        <Tab active={active} setActive={setActive} />
+        <DetailTab {...data} />
+        <Divider style={styles.divider} />
+        <Users
+          left={
+            <GoingButton
+              style={styles.left}
+              me_going={me_going}
+              goings_count={participants.length}
+            />
+          }
+          divider
+          users={participants}
+        />
+        <Users
+          left={
+            <LikeButton
+              style={styles.left}
+              me_likes={me_likes}
+              likes_count={likes.length}
+            />
+          }
+          users={likes}
+        />
+        <Divider style={styles.dividerLess4} />
+        <Comments comments={comments} />
+      </ScrollView>
+      <Footer me_going={me_going} me_likes={me_likes} />
+    </>
   );
 }
 
@@ -78,7 +82,7 @@ export interface WarperProps {
 }
 
 export default function ({refetch}: WarperProps) {
-  const data = useAppSelector(state => state.eventDetail);
+  const data = useAppSelector(state => state.eventDetail.event);
   switch (data.type) {
     case 'networkError':
       return <Network refetch={refetch} />;

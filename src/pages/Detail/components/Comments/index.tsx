@@ -1,7 +1,7 @@
 import {CommentItem} from '@/service/getEventComments';
 import {fromNow} from '@/utils/time';
 import React from 'react';
-import {FlatList, Image, Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import styles from './styles';
 
 const replyIcon = require('@assets/detail/reply.png');
@@ -12,12 +12,14 @@ export interface CommentsProps {
 
 export default function ({comments}: CommentsProps) {
   return (
-    <FlatList
-      style={styles.container}
-      data={comments}
-      renderItem={({item}) => <Comment item={item} />}
-      ItemSeparatorComponent={ContentDivider}
-    />
+    <View style={styles.container}>
+      {comments.map((item, index) => (
+        <>
+          <Comment item={item} />
+          {index !== comments.length - 1 && <ContentDivider />}
+        </>
+      ))}
+    </View>
   );
 }
 

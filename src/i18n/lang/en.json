@@ -37,5 +37,7 @@
   "participants": "Participants",
   "comments": "Comments",
   "where": "Where",
-  "when": "When"
+  "when": "When",
+  "join": "Join",
+  "comment_placeholder": "Leave your comment here"
 }

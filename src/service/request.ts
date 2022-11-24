@@ -21,17 +21,19 @@ export default async function appRequest<
   // create headers
   const auth = store.getState().user?.token;
   const headers = new Headers({
-    'Content-Type': 'application/json',
     Accept: 'application/json',
   });
   if (auth) {
     headers.append('x-blackcat-token', auth);
   }
+  if (body) {
+    headers.append('Content-Type', 'application/json');
+  }
   // send request
   try {
     const response = await fetch(`${URL_BASE}${path}`, {
       method: method,
-      body: JSON.stringify(body),
+      body: body ? JSON.stringify(body) : undefined,
       headers,
     });
     try {
@@ -72,5 +74,48 @@ export function toastResponse(res: ResponseType<any>) {
     Alert.alert(res.payload.message);
   } else if (res.type === 'jsonError') {
     Alert.alert(res.payload.message);
+  }
+}
+
+export async function appRequestWithoutResponse<Req extends object | undefined>(
+  path: string,
+  method: Method = 'GET',
+  body?: Req,
+): Promise<ResponseType<{}>> {
+  // create headers
+  const auth = store.getState().user?.token;
+  const headers = new Headers({
+    Accept: 'application/json',
+  });
+  if (auth) {
+    headers.append('x-blackcat-token', auth);
+  }
+  if (body) {
+    headers.append('Content-Type', 'application/json');
+  }
+  // send request
+  try {
+    const response = await fetch(`${URL_BASE}${path}`, {
+      method: method,
+      body: body ? JSON.stringify(body) : undefined,
+      headers,
+    });
+    try {
+      const data: ResponseData<{}> = await response.json();
+      if (data.error === undefined && data) {
+        return {type: 'ok', payload: {}};
+      } else {
+        // be api error
+        return {type: 'apiError', payload: new Error(data.error)};
+      }
+    } catch (err) {
+      return {type: 'ok', payload: {}};
+    }
+  } catch (err) {
+    // network error
+    if (err instanceof Error) {
+      return {type: 'networkError', payload: err};
+    }
+    return {type: 'unknown'};
   }
 }

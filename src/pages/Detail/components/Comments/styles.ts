@@ -4,6 +4,7 @@ export default StyleSheet.create({
   container: {
     marginTop: 24,
     paddingHorizontal: 16,
+    marginBottom: 16,
   },
   divider: {
     height: 16,
