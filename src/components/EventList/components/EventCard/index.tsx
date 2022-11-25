@@ -3,9 +3,9 @@ import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 import {EventItem} from '@/service/getEventList';
 import {RouterData} from '@/components/AppRouter';
-import Channel from '../../../../../../components/Channel';
-import GoingButton from '../../../../../../components/GoingButton';
-import LikeButton from '../../../../../../components/LikeButton';
+import Channel from '../../../Channel';
+import GoingButton from '../../../GoingButton';
+import LikeButton from '../../../LikeButton';
 import styles from './styles';
 import Time from './Time';
 
