@@ -1,7 +1,9 @@
 import {CommentItem} from '@/service/getEventComments';
+import {setEventDetailFooterStatusComment} from '@/store/eventDetail/actionCreator';
+import {useAppDispatch} from '@/store/types';
 import {fromNow} from '@/utils/time';
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, Pressable, Text, View} from 'react-native';
 import styles from './styles';
 
 const replyIcon = require('@assets/detail/reply.png');
@@ -23,26 +25,22 @@ export default function ({comments}: CommentsProps) {
   );
 }
 
-function Comment({
-  item: {
-    comment,
-    user: {avatar, username},
-    updatedAt,
-  },
-}: {
-  item: CommentItem;
-}) {
+function Comment({item: {comment, user, updatedAt}}: {item: CommentItem}) {
+  const dispatch = useAppDispatch();
   return (
     <View style={styles.item}>
-      <Image style={styles.image} source={{uri: avatar}} />
+      <Image style={styles.image} source={{uri: user.avatar}} />
       <View style={styles.content}>
         <View style={styles.contentTop}>
-          <Text style={styles.name}>{username}</Text>
+          <Text style={styles.name}>{user.username}</Text>
           <Text style={styles.time}>{fromNow(updatedAt)}</Text>
         </View>
         <Text style={styles.text}>{comment}</Text>
       </View>
-      <Image source={replyIcon} style={styles.reply} />
+      <Pressable
+        onPress={() => dispatch(setEventDetailFooterStatusComment(user))}>
+        <Image source={replyIcon} style={styles.reply} />
+      </Pressable>
     </View>
   );
 }

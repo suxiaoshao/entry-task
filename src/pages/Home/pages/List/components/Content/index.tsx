@@ -3,7 +3,7 @@ import {FlatList} from 'react-native';
 import Divider from '../../../../../../components/Divider';
 import SaveBottom from '../../../../../../components/SaveBottom';
 import {useAppDispatch, useAppSelector} from '@/store/types';
-import EventCard from '../EventCard';
+import EventCard from '../../../../../../components/EventList/components/EventCard';
 import styles from './styles';
 import {fetchEventDataMore} from '@/store/eventList/actionCreator';
 

@@ -10,12 +10,13 @@ import {ScrollView, Text, View} from 'react-native';
 import Creator from '../Creator';
 import DetailTab from '../DetailTab';
 import Users from '../Users';
-import Tab, {ActiveType} from '../Tab';
+import Tab from '../Tab';
 import styles from './styles';
 import GoingButton from '@/components/GoingButton';
 import LikeButton from '@/components/LikeButton';
 import Comments from '../Comments';
 import Footer from '../Footer';
+import {ActiveType} from '../Tab/hooks';
 
 export interface ContentProps {
   data: EventDetail;

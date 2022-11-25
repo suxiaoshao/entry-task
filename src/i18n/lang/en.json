@@ -1,5 +1,4 @@
 {
-  "me_name": "Me",
   "sing_in": "SING IN",
   "sing_in_desc": "FIND THE MOST LOVED ACTIVITIES",
   "sing_in_title": "BLACK CAT",
@@ -39,5 +38,9 @@
   "where": "Where",
   "when": "When",
   "join": "Join",
-  "comment_placeholder": "Leave your comment here"
+  "comment_placeholder": "Leave your comment here",
+  "past": "Past",
+  "api_error3": "loading error, please try again",
+  "no_more": "no more data~",
+  "no_data": "No activity found"
 }

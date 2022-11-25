@@ -33,7 +33,7 @@ export default function ({
         showsHorizontalScrollIndicator={false}>
         <View style={styles.imageHeader} />
         {images.map(value => (
-          <Image style={styles.image} source={{uri: value}} />
+          <Image key={value} style={styles.image} source={{uri: value}} />
         ))}
         <View style={styles.imageFooter} />
       </ScrollView>
