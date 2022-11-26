@@ -16,7 +16,7 @@ import GoingButton from '@/components/GoingButton';
 import LikeButton from '@/components/LikeButton';
 import Comments from '../Comments';
 import Footer from '../Footer';
-import {ActiveType} from '../Tab/hooks';
+import {useScroll} from '../../hooks';
 
 export interface ContentProps {
   data: EventDetail;
@@ -35,10 +35,14 @@ function Content({
     ...data
   },
 }: ContentProps) {
-  const [active, setActive] = React.useState<ActiveType>('detail');
+  const {commentsOnLayout, detailOnLayout, participantsOnLayout, scrollRef} =
+    useScroll();
   return (
     <>
-      <ScrollView style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        stickyHeaderIndices={[1]}
+        ref={scrollRef}>
         <View style={styles.header}>
           <View style={styles.channelBox}>
             <Channel {...channel} />
@@ -46,9 +50,9 @@ function Content({
           <Text style={styles.title}>{name}</Text>
           <Creator {...creator} />
         </View>
-        <Tab active={active} setActive={setActive} />
-        <DetailTab {...data} />
-        <Divider style={styles.divider} />
+        <Tab />
+        <DetailTab onLayout={detailOnLayout} {...data} />
+        <Divider style={styles.divider} onLayout={participantsOnLayout} />
         <Users
           left={
             <GoingButton
@@ -70,7 +74,7 @@ function Content({
           }
           users={likes}
         />
-        <Divider style={styles.dividerLess4} />
+        <Divider onLayout={commentsOnLayout} style={styles.dividerLess4} />
         <Comments comments={comments} />
       </ScrollView>
       <Footer me_going={me_going} me_likes={me_likes} />

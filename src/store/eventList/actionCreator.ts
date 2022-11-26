@@ -1,8 +1,5 @@
 import {AppThunkAction} from '../types';
-import getEventListRequest, {
-  GetEventListRequest,
-  GetEventListResponse,
-} from '@/service/getEventList';
+import getEventListRequest, {GetEventListRequest} from '@/service/getEventList';
 import {
   EventListAction,
   EventListActionTypes,
@@ -11,44 +8,45 @@ import {
 } from './types';
 import {thisMonth, thisWeek, today, tomorrow} from '@/utils/time';
 import {toastResponse} from '@/service/request';
+import {EventListWithStatus} from '../user/types';
 
 export const setSearchAndFetchEventList =
   (data: EventListSearch | null): AppThunkAction =>
   async dispatch => {
     dispatch(setEventListSearch(data));
+    dispatch(setEventListData({type: 'loading'}));
     const searchParams = getRequestData(data);
     const result = await getEventListRequest(searchParams);
     toastResponse(result);
-    if (result.type === 'ok') {
-      return dispatch(setEventListData(result.payload));
-    }
+    return dispatch(setEventListData(result));
   };
 
 export const fetchEventData =
   (): AppThunkAction => async (dispatch, getState) => {
+    dispatch(setEventListData({type: 'loading'}));
     const search = getState().eventList.search;
     const searchParams = getRequestData(search);
     const data = await getEventListRequest(searchParams);
     toastResponse(data);
-    if (data.type === 'ok') {
-      return dispatch(setEventListData(data.payload));
-    }
+    return dispatch(setEventListData(data));
   };
 
 export const fetchEventDataMore =
   (): AppThunkAction => async (dispatch, getState) => {
+    if (getState().eventList.more.type !== 'ok') {
+      return getState();
+    }
+    dispatch(setEventListDataMore({type: 'loading'}));
     const search = getState().eventList.search;
-    const count = getState().eventList.data?.events.length;
-    const searchParams = getRequestData(search, count);
+    const oldData = getState().eventList.data;
+    const searchParams = getRequestData(search, oldData);
     const data = await getEventListRequest(searchParams);
     toastResponse(data);
-    if (data.type === 'ok') {
-      return dispatch(setEventListDataMore(data.payload));
-    }
+    return dispatch(setEventListDataMore(data));
   };
 function getRequestData(
   search: EventListSearch | null,
-  offset?: number,
+  oldData?: EventListWithStatus,
 ): GetEventListRequest {
   const result: GetEventListRequest = {};
   if (search?.channels && search.channels.length >= 1) {
@@ -80,20 +78,20 @@ function getRequestData(
       result.before = time.before;
     }
   }
-  if (offset) {
-    result.offset = offset;
+  if (oldData?.type === 'ok') {
+    result.offset = oldData.payload.events.length;
   }
   return result;
 }
 export const setEventListData = (
-  data: GetEventListResponse | null,
+  data: EventListWithStatus,
 ): EventListAction => ({
   type: EventListActionTypes.SET_EVENT_LIST_DATA,
   payload: data,
 });
 
 export const setEventListDataMore = (
-  data: GetEventListResponse,
+  data: EventListWithStatus,
 ): EventListAction => ({
   type: EventListActionTypes.SET_EVENT_LIST_DATA_MORE,
   payload: data,

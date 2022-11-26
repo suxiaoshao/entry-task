@@ -4,7 +4,7 @@ import {useMemo} from 'react';
 
 export function useTabItem() {
   const t = useI18n();
-  return useMemo<TabItem<ActiveType>[]>(
+  return useMemo<TabItem<DetailTabType>[]>(
     () => [
       {
         activeIcon: require('@/assets/detail/detail_active.png'),
@@ -29,4 +29,4 @@ export function useTabItem() {
   );
 }
 
-export type ActiveType = 'detail' | 'participant' | 'comment';
+export type DetailTabType = 'detail' | 'participant' | 'comment' | '';

@@ -18,6 +18,7 @@ import getEventParticipantsRequest, {
 } from '@/service/getEventParticipants';
 import {ResponseTypeWithStatus} from '@/hooks/useRequest';
 import {UserItem} from '@/service/getEventList';
+import {DetailTabType} from '@/pages/Detail/components/Tab/hooks';
 
 export const fetchEventDetailData =
   (id: number): AppThunkAction =>
@@ -107,3 +108,8 @@ export const setEventDetailFooterStatusComment = (
   user
     ? setEventDetailFooterStatus({type: 'commentWithUser', payload: user})
     : setEventDetailFooterStatus({type: 'comment'});
+
+export const setEventDetailTab = (tab: DetailTabType): EventDetailAction => ({
+  type: EventDetailActionTypes.SET_EVENT_DETAIL_TAB,
+  payload: tab,
+});

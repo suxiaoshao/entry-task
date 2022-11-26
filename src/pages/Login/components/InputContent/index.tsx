@@ -26,6 +26,8 @@ export default function ({username, password}: InputContentProps) {
         iconSource={userIcon}
         activeContainStyle={styles.activeContainer}
         textContentType={'username'}
+        autoComplete="username"
+        autoCapitalize="none"
       />
       <Text style={styles.errorText}>{username.error}</Text>
       <Input

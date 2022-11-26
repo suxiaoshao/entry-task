@@ -7,7 +7,11 @@ import useActiveText from '../../../Search/components/SubmitButton/useActiveText
 import styles from './styles';
 
 export default function () {
-  const count = useAppSelector(state => state.eventList.data?.total);
+  const count = useAppSelector(state => {
+    if (state.eventList.data.type === 'ok') {
+      return state.eventList.data.payload.total;
+    }
+  });
   const t = useI18n();
   const search = useAppSelector(state => state.eventList.search);
   const text = useActiveText(search?.time, search?.channels);

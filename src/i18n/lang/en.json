@@ -42,5 +42,6 @@
   "past": "Past",
   "api_error3": "loading error, please try again",
   "no_more": "no more data~",
-  "no_data": "No activity found"
+  "no_data": "No activity found",
+  "view_all": "VIEW ALL"
 }

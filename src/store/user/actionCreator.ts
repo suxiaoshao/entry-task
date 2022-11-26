@@ -102,7 +102,7 @@ function getRequestData(
   if (eventListData?.type === 'ok') {
     return {
       type: tab,
-      offset: eventListData.payload.total,
+      offset: eventListData.payload.events.length,
     };
   }
   return {

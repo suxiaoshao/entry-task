@@ -1,17 +1,20 @@
 import Tab from '@/components/Tab';
-import React from 'react';
-import {ActiveType, useTabItem} from './hooks';
+import {setEventDetailTab} from '@/store/eventDetail/actionCreator';
+import {useAppDispatch, useAppSelector} from '@/store/types';
+import React, {useCallback} from 'react';
+import {DetailTabType, useTabItem} from './hooks';
 
-export interface TabProps {
-  active: ActiveType;
-  setActive: (value: ActiveType) => void;
-}
-
-export default function ({active, setActive}: TabProps) {
+export default function () {
   const tabItem = useTabItem();
+  const active = useAppSelector(state => state.eventDetail.tab);
+  const dispatch = useAppDispatch();
+  const setActive = useCallback(
+    (tab: DetailTabType) => dispatch(setEventDetailTab(tab)),
+    [dispatch],
+  );
   return (
     <>
-      <Tab<ActiveType> value={active} setActive={setActive}>
+      <Tab<DetailTabType> value={active} setActive={setActive}>
         {tabItem}
       </Tab>
     </>

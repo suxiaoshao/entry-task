@@ -6,9 +6,9 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: '#E8E8E8',
-    marginTop: 24,
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#ffffff',
   },
   tabItem: {
     flex: 1,
