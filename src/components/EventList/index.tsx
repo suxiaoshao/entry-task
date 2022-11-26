@@ -41,9 +41,16 @@ export default function ({data, onEndReached, refetch, more}: EventListProps) {
               hidden={data.payload.events.length === 0}
             />
           }
-          onEndReached={data.payload.hasMore ? onEndReached : undefined}
+          // Prevent multiple fetch more requests
+          onEndReached={
+            data.payload.hasMore && more.type !== 'loading'
+              ? onEndReached
+              : undefined
+          }
           onEndReachedThreshold={0.5}
           ListEmptyComponent={Empty}
+          onRefresh={refetch}
+          refreshing={more.type === 'loading'}
         />
       );
     case 'loading':

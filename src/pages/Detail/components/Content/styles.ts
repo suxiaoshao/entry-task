@@ -7,6 +7,7 @@ export default StyleSheet.create({
   header: {
     padding: 16,
     paddingBottom: 0,
+    marginBottom: 24,
   },
   channelBox: {
     flexDirection: 'row',
@@ -23,7 +24,7 @@ export default StyleSheet.create({
     marginTop: 16,
   },
   left: {
-    width: 80,
+    width: 90,
     marginTop: 4.5,
   },
   dividerLess4: {

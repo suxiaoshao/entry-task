@@ -2,7 +2,7 @@ import {CommentItem} from '@/service/getEventComments';
 import {setEventDetailFooterStatusComment} from '@/store/eventDetail/actionCreator';
 import {useAppDispatch} from '@/store/types';
 import {fromNow} from '@/utils/time';
-import React from 'react';
+import React, {LegacyRef} from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 import styles from './styles';
 
@@ -12,9 +12,9 @@ export interface CommentsProps {
   comments: CommentItem[];
 }
 
-export default function ({comments}: CommentsProps) {
+function Comments({comments}: CommentsProps, ref: LegacyRef<View>) {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} ref={ref}>
       {comments.map((item, index) => (
         <>
           <Comment item={item} />
@@ -48,3 +48,5 @@ function Comment({item: {comment, user, updatedAt}}: {item: CommentItem}) {
 function ContentDivider() {
   return <View style={styles.divider} />;
 }
+
+export default React.forwardRef(Comments);

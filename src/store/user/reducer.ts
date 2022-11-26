@@ -63,7 +63,7 @@ export default function userReducer(
   }
 }
 
-function concat(
+export function concat(
   left: EventListWithStatus,
   right: EventListWithStatus,
 ): EventListWithStatus {

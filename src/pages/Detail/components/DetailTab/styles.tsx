@@ -2,15 +2,6 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   container: {},
-  description: {
-    fontStyle: 'normal',
-    fontWeight: '400',
-    fontSize: 14,
-    lineHeight: 18,
-    color: '#67616D',
-    paddingHorizontal: 16,
-    marginTop: 10,
-  },
   images: {
     flexDirection: 'row',
     marginTop: 14,

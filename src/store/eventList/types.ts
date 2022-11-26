@@ -1,12 +1,12 @@
-import {
-  GetEventListRequest,
-  GetEventListResponse,
-} from '@/service/getEventList';
+import {ResponseTypeWithStatus} from '@/hooks/useRequest';
+import {GetEventListRequest} from '@/service/getEventList';
 import {Enum} from '@/utils/types';
+import {EventListWithStatus} from '../user/types';
 
 export type EventListState = {
-  data: GetEventListResponse | null;
+  data: EventListWithStatus;
   search: EventListSearch | null;
+  more: ResponseTypeWithStatus<{}>;
 };
 
 export type EventListSearchTimeValue = Pick<
@@ -34,6 +34,6 @@ export enum EventListActionTypes {
 }
 
 export type EventListAction =
-  | Enum<EventListActionTypes.SET_EVENT_LIST_DATA, GetEventListResponse | null>
+  | Enum<EventListActionTypes.SET_EVENT_LIST_DATA, EventListWithStatus>
   | Enum<EventListActionTypes.SET_EVENT_LIST_SEARCH, EventListSearch | null>
-  | Enum<EventListActionTypes.SET_EVENT_LIST_DATA_MORE, GetEventListResponse>;
+  | Enum<EventListActionTypes.SET_EVENT_LIST_DATA_MORE, EventListWithStatus>;
