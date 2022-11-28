@@ -3,6 +3,7 @@ object Login{
     state
     \t username
     \t password
+    \t onSubmit
 }
 object Input{
     props
@@ -10,7 +11,12 @@ object Input{
     \t onChangeText
     \t placeholder
     \t placeholderTextColor
-    \t icon
+    \t iconSource
+    \t containerStyle
+    \t iconStyle
+    \t activeContainStyle
+    state
+    \t active
 }
 Login -->Input
 @enduml

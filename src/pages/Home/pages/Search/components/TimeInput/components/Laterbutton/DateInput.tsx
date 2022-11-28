@@ -1,7 +1,7 @@
-import dayjs from 'dayjs';
 import React, {useMemo} from 'react';
 import {Pressable, Text} from 'react-native';
 import DatePicker from 'react-native-date-picker';
+import dayjs from 'dayjs';
 import styles from './styles';
 
 export interface DateInputProps {

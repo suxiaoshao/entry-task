@@ -1,3 +1,4 @@
+import React from 'react';
 import 'react-native-gesture-handler/jestSetup';
 
 jest.mock('react-native-reanimated', () => {
@@ -20,3 +21,12 @@ jest.mock('react-i18next', () => ({
     };
   },
 }));
+
+jest.mock('react-native-date-picker', () => () => null);
+
+jest.mock(
+  'react-native-linear-gradient',
+  () =>
+    ({children}: {children: React.ReactNode}) =>
+      children,
+);

@@ -9,6 +9,8 @@
     "strictNullChecks": true,
     "paths": {
       "@/*": ["./src/*"],
+      "@mocks/*":["./__mocks__/*"],
+      "@tests/*":["./__tests__/*"]
     }
   }
 }

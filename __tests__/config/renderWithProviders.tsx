@@ -9,3 +9,13 @@ export function renderWithProviders(ui: React.ReactElement) {
   }
   return renderer.create(<Wrapper />);
 }
+
+export function updateWithProviders(
+  ui: React.ReactElement,
+  render: renderer.ReactTestRenderer,
+) {
+  function Wrapper(): JSX.Element {
+    return <Provider store={store}>{ui}</Provider>;
+  }
+  return render.update(<Wrapper />);
+}
