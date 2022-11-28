@@ -1,0 +1,88 @@
+@startuml "detail page"
+object Detail{
+    state
+    \t id
+    \t fetch
+}
+object Header{
+  props
+  \t leftIcon
+  \t onLeftPress
+  state
+  \t avatar
+  \t navigation
+}
+Detail --> Header
+object Wraper{
+  props
+  \t refetch
+  state
+  \t data
+}
+Detail --> Wraper
+object Network {
+  props
+  \t refetch
+}
+object ApiError{
+
+}
+object Loading{
+  
+}
+object Content{
+  props
+  \t data
+  state
+  \t useScroll
+}
+Wraper --> Network
+Wraper --> ApiError
+Wraper --> Loading
+Wraper --> Content
+object DetailTab{
+  props
+  \t data
+}
+object Users{
+  props
+  \t users
+  \t divider
+  \t left
+  state
+  \t open
+  \t displayUsers
+}
+object Footers{
+  props
+  \t me_going
+  \t me_likes
+  state
+  \t status
+  \t id
+  \t onGoing
+  \t onLikes
+}
+object Comments{
+  props
+  \t comments
+}
+Content --> DetailTab
+Content --> Users
+Content --> Comments
+Content -->Footers
+object Comment{
+  props
+  \t item
+}
+object CommentInput{
+  props
+  \t user
+  state
+  \t comment
+  \t id
+  \t onSend
+}
+Comments --> Comment
+Footers --> CommentInput
+@enduml

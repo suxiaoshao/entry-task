@@ -113,7 +113,9 @@ export function Comment({user}: CommentProps) {
           <Image style={styles.close} source={closeIcon} />
         </Pressable>
         <TextInput
-          placeholder={user?.username ?? t('comment_placeholder')}
+          placeholder={
+            user?.username ? `@${user?.username}` : t('comment_placeholder')
+          }
           placeholderTextColor="#D3C1E5"
           style={styles.input}
           value={comment}
