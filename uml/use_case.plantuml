@@ -1,0 +1,105 @@
+@startuml use case
+
+skinparam actorStyle awesome
+:User: as user
+
+' login
+rectangle "login case" {
+    (login) as login
+    (vertify password) as ver_pass
+    (vertify username) as ver_user
+    login --> ver_pass #line.dotted :include
+    login --> ver_user #line.dotted :include
+}
+user --> login
+
+
+' list
+rectangle "view list case" {
+    (view list) as view_list
+    (click search icon) as click_search
+    (click avatar icon) as click_avatar
+    (click event area) as click_event
+    view_list --> click_search #line.dotted :include
+    click_search --> (open search page)
+    view_list --> click_avatar #line.dotted :include
+    click_avatar -> (jump me page)
+    view_list --> click_event #line.dotted :include
+    click_event --> (jump event detail page)
+    view_list --> (show filter infoe) :optional after search
+}
+user --> view_list
+
+' search
+rectangle "search case" {
+    (search) as search
+    (select date) as search_date
+    (select channel) as search_channel
+    (click search button) as click_search_btn
+    search --> search_date #line.dotted :include
+    search --> search_channel #line.dotted :include
+    search --> click_search_btn #line.dotted :include,require date and channel
+
+    (click date later) as click_date_later
+    search_date --> click_date_later
+    (select start date) as select_start_date
+    (select end date) as select_end_date
+    click_date_later --> select_start_date
+    click_date_later --> select_end_date
+    click_search_btn --> (jump list page)
+}
+user --> search
+
+' detail
+rectangle "detail case" {
+    (view detail) as view_detail
+    (click avatar icon) as click_avatar2
+    (click home icon) as click_home
+    view_detail --> click_avatar2 #line.dotted :include
+    view_detail --> click_home #line.dotted :include
+    (jump me page) as jump_me
+    click_avatar2 --> jump_me
+    click_home --> (jump home page)
+
+    (select tab) as select_tab
+    note right of select_tab :includes details,participants,components tabs
+    view_detail --> select_tab #line.dotted :include
+
+    (select participant) as select_participant
+    (select component) as select_component
+    (select detail) as select_detail
+    select_tab --> select_participant
+    select_tab --> select_component
+    select_tab --> select_detail
+    
+    (select join) as click_join
+    (select love) as click_love
+    (add comment) as add_comment
+    view_detail --> click_join #line.dotted :include
+    view_detail --> click_love #line.dotted :include
+    view_detail --> add_comment #line.dotted :include
+}
+user --> view_detail
+
+' me
+rectangle "me case" {
+    (view me) as view_me
+    (click avatar icon) as click_avatar3
+    (click home icon) as click_home2
+    view_me --> click_avatar3 #line.dotted :include
+    view_me --> click_home2 #line.dotted :include
+
+     (select tab) as select_tab2
+    note right of select_tab2 :includes details,participants,components tabs
+    view_detail --> select_tab2 #line.dotted :include
+
+    (select like) as select_like
+    (select going) as select_going
+    (select past) as select_past
+    select_tab2 --> select_like
+    select_tab2 --> select_going
+    select_tab2 --> select_past
+}
+user --> view_me
+
+@enduml

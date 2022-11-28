@@ -1,0 +1,69 @@
+@startuml "me page"
+object Me{
+    state
+    \t tab
+    \t onEndReached
+    \t refetch
+    \t data
+    \t useInitFetch
+}
+object Header{
+  props
+  \t leftIcon
+  \t onLeftPress
+  state
+  \t avatar
+  \t navigation
+}
+Me -->Header
+object BaseInfo{
+  state
+  \t user
+}
+Me --> BaseInfo
+object MeTab{
+  state
+  \t tabItem
+  \t active
+}
+Me --> MeTab
+object EventList{
+  props
+  \t data
+  \t onEndReached
+  \t refetch
+  \t more
+}
+Me --> EventList
+object Network {
+  props
+  \t refetch
+}
+object ApiError{
+
+}
+object Loading{
+}
+EventList --> Network
+EventList --> ApiError
+EventList --> Loading
+object EventCard{
+  props
+  \t data
+  state
+  \t navigator
+}
+EventList --> EventCard
+object MoreStatus{
+  props
+  \t more
+  \t hasMore
+  \t refetch
+  \t hidden
+}
+EventList -> MoreStatus
+object Empty{
+
+}
+EventList --> Empty
+@enduml

@@ -7,28 +7,47 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "link": "react-native link"
   },
   "dependencies": {
-    "react": "18.1.0",
-    "react-native": "0.70.2"
+    "@react-navigation/drawer": "^6.5.0",
+    "@react-navigation/native": "^6.0.13",
+    "@react-navigation/native-stack": "^6.9.1",
+    "dayjs": "^1.11.6",
+    "i18next": "^22.0.6",
+    "react": "18.2.0",
+    "react-i18next": "^12.0.0",
+    "react-native": "0.70.6",
+    "react-native-date-picker": "^4.2.6",
+    "react-native-linear-gradient": "^2.6.2",
+    "react-native-localize": "^2.2.4",
+    "react-native-safe-area-context": "^4.4.1",
+    "react-native-screens": "^3.18.2",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/runtime": "^7.12.5",
-    "@react-native-community/eslint-config": "^2.0.0",
+    "@babel/core": "^7.20.2",
+    "@babel/runtime": "^7.20.1",
+    "@react-native-community/eslint-config": "^3.1.0",
     "@tsconfig/react-native": "^2.0.2",
-    "@types/jest": "^26.0.23",
-    "@types/react-native": "^0.70.4",
+    "@types/jest": "^29.2.3",
+    "@types/react-native": "^0.70.6",
     "@types/react-test-renderer": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.37.0",
-    "@typescript-eslint/parser": "^5.37.0",
-    "babel-jest": "^26.6.3",
-    "eslint": "^7.32.0",
-    "jest": "^26.6.3",
-    "metro-react-native-babel-preset": "0.72.3",
-    "react-test-renderer": "18.1.0",
-    "typescript": "^4.8.3"
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "babel-jest": "^29.3.1",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^8.28.0",
+    "jest": "^29.3.1",
+    "metro-react-native-babel-preset": "0.73.3",
+    "prettier": "^2.7.1",
+    "react-native-gesture-handler": "^2.8.0",
+    "react-native-reanimated": "^2.13.0",
+    "react-test-renderer": "18.2.0",
+    "typescript": "^4.9.3"
   },
   "jest": {
     "preset": "react-native",
@@ -39,6 +58,16 @@
       "jsx",
       "json",
       "node"
+    ],
+    "setupFiles": [
+      "./__tests__/config/jest.setup.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "__tests__/config"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.test.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[jt]s?(x)"
     ]
   }
 }

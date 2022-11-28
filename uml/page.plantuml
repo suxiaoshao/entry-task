@@ -1,0 +1,18 @@
+@startuml page
+
+state "login page" as login_page
+state "home page" as home_page
+home_page:search and view event list
+state "detail page" as detail_page
+detail_page:view event detail and operate event status
+state "me page" as me_page
+me_page:view user info
+[*] --> login_page
+login_page --> home_page:click login button
+home_page --> me_page:click avatar icon
+home_page --> detail_page:click event area
+me_page --> home_page:click home icon
+detail_page --> home_page:click home icon
+me_page --> detail_page:click event area
+detail_page --> me_page:click avatar icon
+@enduml
