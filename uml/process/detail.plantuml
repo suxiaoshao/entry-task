@@ -1,0 +1,19 @@
+@startuml detail
+actor Actor as user
+participant App as app
+participant Server as server
+
+user -> app :click event item
+app -> server :request envet data
+server -> app :response event data
+app -> user :show event data
+user -> app :select participants tab
+app -> server :request envet participants data
+server -> app :response event participants data
+app -> user :show event participants data
+user -> app :select comments tab
+app -> server :request envet comments data
+server -> app :response event comments data
+app -> user :show event comments data
+
+@enduml

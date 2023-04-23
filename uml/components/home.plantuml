@@ -1,0 +1,66 @@
+@startuml "home page"
+object Home{
+    state
+    \t Drawer
+}
+object Search{
+    state
+    \t time
+    \t channels
+}
+object ChannelsInput{
+    props
+    \t channels
+    state
+    \t all_channels
+    \t onChannelPress
+}
+object TimeInput{
+    props
+    \t time
+}
+object SubmitButton{
+    props
+    \t time 
+    \t channels
+    state
+    \t active
+    \t activeText
+    \t dispatch
+    \t navigation
+}
+Search --> ChannelsInput
+Search --> TimeInput
+Search --> SubmitButton
+object List{
+  state
+  \t navigation
+  \t dispatch
+}
+object Header{
+  props
+  \t leftIcon
+  \t onLeftPress
+  state
+  \t avatar
+  \t navigation
+}
+object Filter{
+  state
+  \t count
+  \t search
+  \t text
+}
+object Content{
+  state
+  \t onEndReached
+  \t refetch
+  \t data
+  \t more
+}
+List --> Header
+List --> Filter
+List --> Content
+Home -->Search
+Home -->List
+@enduml

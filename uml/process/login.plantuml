@@ -1,0 +1,12 @@
+@startuml login
+actor Actor as user
+participant App as app
+participant Server as server
+
+user -> app :input username,password and login
+app -> server :request login
+server -> app :response login(success and fail)
+app -> user :fail,input again
+app -> user :success,save token and user info
+
+@enduml
